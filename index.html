@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
 <body>
-    <header>Basic Calculator</header>
+    <header><h1>Basic Calculator</h1></header>
 
     <main>
+    <section class="calculator">
         <section class="calculator-display"></section>
-        <figure>insert numbers</figure>
+            <figure class="display"></figure>
         <section class="calculator-btn">
             <table>
                 <tr>
-                    <td><button class="left-arrow">&leftarrow;;</button></td>
+                    <td><button class="left-arrow">&leftarrow;</button></td>
                     <td><button class="right-arrow">&rightarrow;</button></td>
-                    <td><button class="">^</button></td>
+                    <td><button class="exponential-btn">^</button></td>
                     <td><button class="clear-btn">CE</button></td>
                 </tr>
                 <tr>
@@ -51,12 +53,15 @@
                 </tr>
             </table>
         </section>
+    </section>
     </main>
 
 
     <footer>
         <a href="">@JJThomtin</a>
+        <br>
         <a href="">@Odin Project</a>
     </footer>
+    <script src="javascript.js"></script>
 </body>
 </html>

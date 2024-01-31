@@ -1,5 +1,3 @@
-const LEFT_ARROW_BTN = document.getElementById('left-arrow');
-const RIGHT_ARROW_BTN = document.getElementById('right-arrow');
 const BTN_ONE = document.getElementById('btn-one');
 const BTN_TWO = document.getElementById('btn-two');
 const BTN_THREE = document.getElementById('btn-three');
@@ -17,33 +15,18 @@ const MULTIPLICATION_BTN = document.getElementById('multiply-btn');
 const DIVISION_BTN = document.getElementById('divide-btn');
 const E_NOTATION_BTN = document.getElementById('e-notation-btn');
 const EXPONENTIAL_BTN = document.getElementById('exponential-btn');
+const MODULO_BTN = document.getElementById('modulo-btn');
+const FACTORIAL_BTN = document.getElementById('factorial-btn');
 const CLEAR_BTN = document.getElementById('clear-btn')
 const CLEAR_ALL_BTN = document.getElementById('clear-all-btn');
 const CLOSE_PARENTHESES = document.getElementById('close-parentheses-btn');
 const OPEN_PARENTHESES = document.getElementById('open-parentheses-btn');
 const RADIX_POINT_BTN = document.getElementById("radix-point-btn");
-
 const CALCULATOR_DISPLAY = document.getElementById('display');
 
-let position = 0;
 let equation = ""
 
-// Shift character placement to the left
-LEFT_ARROW_BTN.addEventListener('click', function() {
-    position -= 1;
-    if (position < 0) {
-        position = 0;
-    }
-});
-
-// Shift character placement to the right
-RIGHT_ARROW_BTN.addEventListener('click', function() {
-    postion += 1;
-    if (position > CALCULATOR_DISPLAY.innerText.length) {
-        position = CALCULATOR_DISPLAY.innerText.length
-    }
-});
-
+//Enter a button to input into the calculator
 BTN_ONE.addEventListener('click', function() {
     CALCULATOR_DISPLAY.innerText += "1";
 });
@@ -100,6 +83,18 @@ MINUS_BTN.addEventListener('click', function() {
     CALCULATOR_DISPLAY.innerText += "-";
 });
 
+EXPONENTIAL_BTN.addEventListener('click', function() {
+    CALCULATOR_DISPLAY.innerText += "^";
+});
+
+MODULO_BTN.addEventListener('click', function() {
+    CALCULATOR_DISPLAY.innerText += "%";
+});
+
+FACTORIAL_BTN.addEventListener('click', function() {
+    CALCULATOR_DISPLAY.innerText += "!";
+});
+
 E_NOTATION_BTN.addEventListener('click', function() {
     CALCULATOR_DISPLAY.innerText += "e";
 });
@@ -124,8 +119,17 @@ CLEAR_BTN.addEventListener('click', function() {
     CALCULATOR_DISPLAY.innerText = CALCULATOR_DISPLAY.innerText.slice(0, -1);
 });
 
+//Calculates the equation
 EQUAL_BTN.addEventListener('click', function() {
-    CALCULATOR_DISPLAY.innerText = eval(CALCULATOR_DISPLAY.innerText.replace("x", "*"))
+    equation = CALCULATOR_DISPLAY.innerText.replace(/(\d+)!/g, (m, n) => factorial(+n));
+    CALCULATOR_DISPLAY.innerText = eval(equation.replace("x", "*").replace("^", "**"));
 });
 
+//Calculates the factorial of a number
+function factorial(num) {
+    if (num <= 1) 
+      return 1;
+  
+    return num * factorial(num - 1);
+}
 

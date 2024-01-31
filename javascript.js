@@ -108,7 +108,12 @@ CLOSE_PARENTHESES.addEventListener('click', function() {
 });
 
 RADIX_POINT_BTN.addEventListener('click',  function() {
-    
+    let terms = [];
+    terms = seperateEquation(CALCULATOR_DISPLAY.innerText);
+    //Checks if there is only one radix point in the term
+    if (!terms[terms.length-1].includes(".")){
+        CALCULATOR_DISPLAY.innerHTML += ".";
+    }
 });
 
 CLEAR_ALL_BTN.addEventListener('click', function() {
@@ -133,3 +138,7 @@ function factorial(num) {
     return num * factorial(num - 1);
 }
 
+//Seperates equation into its terms
+function seperateEquation(string) {
+    return string.split(/[^0-9.e]/g);
+}
